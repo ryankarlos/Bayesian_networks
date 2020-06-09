@@ -1,0 +1,22 @@
+#########################################
+
+# temp, setup.py builds and compiled source files #
+
+
+*/__pycache__/*
+.idea
+*.pyc
+*.dll
+*.exe
+dist
+*.egg-info
+.eggs
+.pypirc
+
+# coverage
+.coverage
+coverage.xml
+coverage_html_report
+*.pytest_cache
+.cache/
+.ipynb_checkpoints
