@@ -1,24 +1,18 @@
 dist: xenial
 language: python
 python:
+  - "3.6"
   - "3.7"
-os:
-  - linux
-  - osx
 install:
-  - if
-      [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-      MINICONDA_OS=Linux;
-    else
-      MINICONDA_OS=MacOSX;
-    fi
-  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-$MINICONDA_OS-x86_64.sh -O miniconda.sh;
+  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-linux-x86_64.sh -O miniconda.sh;
   - bash miniconda.sh -b -p $HOME/miniconda
   - source "$HOME/miniconda/etc/profile.d/conda.sh"
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda info -a
-  # Install dependencies from yml
-  - conda env create -f environment.yml
+  # Install dependencies
+  - conda create env bayesian python=$TRAVIS_PYTHON_VERSION
   - conda activate bayesian
+  - conda env update -f environment.yml
+script: print("success")
