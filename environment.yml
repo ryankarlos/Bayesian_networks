@@ -17,4 +17,3 @@ dependencies:
     - hyperopt==0.2.4
     - pystan==2.19.1.1
 prefix: /Users/ryannazareth/anaconda3/envs/bayesian
-

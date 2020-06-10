@@ -11,7 +11,7 @@ def simulate_data_lr(size, intercept, slope):
     x = np.linspace(0, 1, size)
     true_regression_line = m * x + c
     # add noise
-    sigma = np.random.normal(scale=.5, size=size)
+    sigma = np.random.normal(scale=0.5, size=size)
     # Outcome variable
     y = true_regression_line + sigma
     return x, y
