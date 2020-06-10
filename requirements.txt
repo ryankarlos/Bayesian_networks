@@ -3,6 +3,6 @@ gpy==1.9.9
 gpyopt==1.2.6
 hyperopt==0.2.4
 pystan==2.19.1.1
-pymc3=3.8
-scikit-learn=0.22.1
+pymc3==3.8
+scikit-learn==0.22.1
 pre-commit
