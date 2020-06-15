@@ -1,6 +1,7 @@
 name: bayesian
 channels:
   - defaults
+  - conda-forge
 dependencies:
   - numpy=1.18.1
   - pandas=1.0.3
@@ -9,10 +10,10 @@ dependencies:
   - scikit-learn=0.22.1
   - scipy=1.4.1
   - setuptools=47.1.1
+  - seaborn=0.10.1
   - pip:
     - cython==0.29.19
     - gpy==1.9.9
     - gpyopt==1.2.6
     - hyperopt==0.2.4
     - pystan==2.19.1.1
-prefix: /Users/ryannazareth/anaconda3/envs/bayesian

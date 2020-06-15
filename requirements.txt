@@ -4,5 +4,17 @@ gpyopt==1.2.6
 hyperopt==0.2.4
 pystan==2.19.1.1
 pymc3==3.8
+pandas>=1.0.3
 scikit-learn==0.22.1
+scipy>=1.4.1
 pre-commit
+isort
+black==19.10b0
+mypy==0.730
+pytest-cov
+pytest>=5.0.1
+ipykernel
+seaborn
+pip
+coverage
+codecov
