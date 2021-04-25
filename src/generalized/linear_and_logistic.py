@@ -24,9 +24,9 @@ def linear_regression(data: Callable, samples=None) -> pm.Model:
         map = map_estimation(basic_model, method="powell")
         if samples is not None:
             if not isinstance(samples, int):
-                raise(ValueError, "samples arg must be int")
+                raise (ValueError, "samples arg must be int")
             elif samples < 50:
-                raise(ValueError, "samples, must be greater than 50")
+                raise (ValueError, "samples, must be greater than 50")
             else:
                 trace = pm.sample(samples)
                 traceplot(trace)

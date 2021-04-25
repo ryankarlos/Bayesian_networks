@@ -11,7 +11,7 @@ def traceplot(trace):
     plt.tight_layout()
 
 
-def plot_posterior_predictive_samples(trace:np.array, data:Callable, samples=100):
+def plot_posterior_predictive_samples(trace: np.array, data: Callable, samples=100):
 
     x, y = data()
     plt.figure(figsize=(7, 7))
