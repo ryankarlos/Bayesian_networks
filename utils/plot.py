@@ -1,5 +1,5 @@
 from typing import Callable
-
+import bnlearn
 import numpy as np
 from matplotlib import pyplot as plt
 from pymc3 import plot_posterior_predictive_glm
@@ -23,3 +23,11 @@ def plot_posterior_predictive_samples(trace:np.array, data:Callable, samples=100
     plt.legend(loc=0)
     plt.xlabel("x")
     plt.ylabel("y")
+
+
+def plot_bayesian_network(DAG):
+    bnlearn.plot(DAG)
+
+
+def compare_network_plot(model, DAG):
+    bnlearn.compare_networks(model, DAG)

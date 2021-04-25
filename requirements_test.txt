@@ -1,0 +1,7 @@
+black
+flake8
+pytest>= 3.3.1
+pytest-cov
+coverage>=4.3.4
+codecov>=2.0.15
+pre-commit==2.12.1

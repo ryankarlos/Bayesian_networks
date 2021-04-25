@@ -2,16 +2,17 @@ name: bayesian
 channels:
   - defaults
 dependencies:
-  - numpy
-  - pandas
   - pip=20.0.2
-  - scikit-learn=0.22.1
-  - scipy
+  - python=3.7
   - setuptools=47.1.1
   - pip:
-    - cython==0.29.19
-    - gpy==1.9.9
-    - gpyopt==1.2.6
-    - hyperopt==0.2.4
-    - pystan==2.19.1.1
-    - pymc3
+    - hyperopt==0.2.5
+    - pomegranate==0.14.4
+    - pymc3==3.8
+    - numpy==1.20.2
+    - bnlearn==0.3.17
+    - pandas==1.2.4
+    - matplotlib==3.4.1
+    - scikit-learn==0.22.1
+    - networkx>=2.0
+    - scipy>=0.17.0
