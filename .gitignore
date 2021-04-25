@@ -2,7 +2,7 @@
 
 # temp, setup.py builds and compiled source files #
 
-
+.DS_Store
 */__pycache__/*
 .idea
 *.pyc
