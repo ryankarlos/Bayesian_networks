@@ -1,22 +1,11 @@
-dist: xenial
 language: python
-python:
-  - "3.7"
-  - "3.6"
+services:
+  - docker
 install:
-  - sudo apt update
-  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - source "$HOME/miniconda/etc/profile.d/conda.sh"
-  - hash -r
-  - conda config --set always_yes yes --set changeps1 no
-  - conda update -q conda
-  - conda info -a
-  # Install dependencies
-  - conda create -n bayesian python=$TRAVIS_PYTHON_VERSION
-  - conda activate bayesian
-  - conda env update -f environment.yml
-  - pip install black pytest coverage codecov
+  - docker build -t bayesian .
+  - docker images
+before_script:
+  - docker run -it bayesian
 script:
   - black --version
   - black --check .
