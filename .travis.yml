@@ -4,8 +4,7 @@ services:
 install:
   - docker build -t bayesian .
   - docker images
-before_script:
-  - docker run -it bayesian
 script:
+  - docker run -it bayesian
   - black --version
   - black --check .
