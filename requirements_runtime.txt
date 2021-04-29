@@ -1,5 +1,5 @@
 pomegranate==0.14.4
-pymc3==3.8
+pymc3==3.11.2
 numpy>=1.20.0
 bnlearn==0.3.17
 pandas>=1.2.3

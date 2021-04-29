@@ -20,3 +20,7 @@ def hmc_nuts(model: pm.Model, samples=500, step=None, start=None) -> pm.sample:
             trace = pm.samples(samples, step=step)
 
     return trace
+
+
+def variational_inference():
+    pass

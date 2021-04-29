@@ -1,12 +1,14 @@
-import pymc3 as pm
-from data.data import simulate_data_lr
-from typing import Callable
-from utils.plot import traceplot
-from utils.map_and_sampling import map_estimation
-from pymc3 import Normal, HalfCauchy
-from functools import partial
-from utils.constants import LIN_REG_PARAMS
 import logging
+from functools import partial
+from typing import Callable
+
+import pymc3 as pm
+from pymc3 import HalfCauchy, Normal
+
+from data.generate_sample_data import simulate_data_lr
+from models.inference import map_estimation
+from utils.constants import LIN_REG_PARAMS
+from utils.plot import traceplot
 
 log = logging.getLogger("linear_and_logistic")
 
