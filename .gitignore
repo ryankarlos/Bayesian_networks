@@ -3,6 +3,7 @@
 # temp, setup.py builds and compiled source files #
 
 .DS_Store
+data/.DS_Store
 */__pycache__/*
 .idea
 *.pyc

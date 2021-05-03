@@ -1,12 +1,5 @@
 import pomegranate
-from pgmpy.estimators import (
-    PC,
-    BayesianEstimator,
-    BDeuScore,
-    BicScore,
-    HillClimbSearch,
-    K2Score,
-)
+from pgmpy.estimators import PC, BayesianEstimator, BDeuScore, BicScore, HillClimbSearch, K2Score
 from pgmpy.models import BayesianModel
 from pgmpy.sampling import BayesianModelSampling
 
@@ -17,9 +10,7 @@ from utils.logconfig import module_logger
 LOG = module_logger()
 
 
-def structured_learning(
-    data, scoring=K2Score, algo=HillClimbSearch, expert_model=None, **kwargs
-):
+def structured_learning(data, scoring=K2Score, algo=HillClimbSearch, expert_model=None, **kwargs):
 
     """
     Perform structure learning on the data set,
@@ -44,25 +35,22 @@ def structured_learning(
     est = algo(data)
     estimated_model = est.estimate(scoring_method, **kwargs)
     if expert_model is not None:
-        LOG.info(
-            "F1-score for the model skeleton: ",
-            get_f1_score(estimated_model, expert_model),
-        )
+        LOG.info('F1-score for the model skeleton: ', get_f1_score(estimated_model, expert_model))
     print(scoring_method.score(estimated_model))
     print(estimated_model.edges())
     # print(is_independent(edges[0][0], edges[0][1], estimated_model))
     return estimated_model
 
 
-def parameter_learning(data, model, estimator, prior_type="dirichlet"):
+def parameter_learning(data, model, estimator, prior_type='dirichlet'):
     est = estimator(model, data)
     est.get_parameters(prior_type=prior_type)
     return model
 
 
-if __name__ == "__main__":
-    df = bayesian_network_datasets("alarm", 1000)
-    kwargs = {"max_iter": 1e5, "epsilon": 1e-4}
-    LOG.info("Running structured learning")
+if __name__ == '__main__':
+    df = bayesian_network_datasets(name='alarm', samples=1000)
+    kwargs = {'max_iter': 1e5, 'epsilon': 1e-4}
+    LOG.info('Running structured learning')
     model = structured_learning(df, **kwargs)
     # model = parameter_learning(df, model, estimator=BayesianEstimator)
