@@ -16,9 +16,7 @@ def root_logger():
     return LOG
 
 
-def module_logger(
-    level=logging.INFO, filename=None, format=MESS_FORMAT, time=TIME_FORMAT
-):
+def module_logger(level=logging.INFO, filename=None, format=MESS_FORMAT, time=TIME_FORMAT):
     """
     Creates a module level logger
     Parameters
