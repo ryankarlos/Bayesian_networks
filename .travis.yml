@@ -1,10 +1,10 @@
 language: python
 services:
   - docker
-install:
+before_install:
   - docker build -t bayesian .
   - docker images
-script:
   - docker run -it bayesian
+script:
   - black --version
   - black --check .
