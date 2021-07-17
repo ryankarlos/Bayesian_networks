@@ -1,11 +1,11 @@
 pomegranate==0.14.4
-pymc3==3.11.2
+pgmpy
+networkx>=2.0
 numpy>=1.20.0
-bnlearn==0.3.17
 pandas>=1.2.3
 matplotlib==3.4.1
-hyperopt==0.2.5
-networkx>=2.0
+pymc3==3.11.2
+pyvis
 scipy>=0.17.0
 notebook==6.3.0
 ipykernel==5.5.3

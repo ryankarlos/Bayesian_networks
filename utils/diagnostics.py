@@ -2,7 +2,6 @@ import networkx as nx
 import numpy as np
 from pgmpy.estimators import K2Score
 from sklearn.metrics import f1_score
-
 from utils.logconfig import module_logger
 
 LOG = module_logger()
