@@ -1,29 +1,22 @@
 import networkx as nx
 import numpy as np
-from pgmpy.estimators import K2Score
 from sklearn.metrics import f1_score
-from utils.logconfig import module_logger
+from utils.log import get_logger
 
-LOG = module_logger()
+LOG = get_logger(__name__)
 
 
 def get_f1_score(estimated_model, true_model):
-    """
-    Funtion to evaluate the learned model structures.
-    Parameters
-    ----------
-    estimated_model
-    true_model
-
-    Returns
-    -------
-
-    """
     nodes = estimated_model.nodes()
-    est_adj = nx.to_numpy_matrix(estimated_model.to_undirected(), nodelist=nodes, weight=None)
-    true_adj = nx.to_numpy_matrix(true_model.to_undirected(), nodelist=nodes, weight=None)
+    est_adj = nx.to_numpy_matrix(
+        estimated_model.to_undirected(), nodelist=nodes, weight=None
+    )
+    true_adj = nx.to_numpy_matrix(
+        true_model.to_undirected(), nodelist=nodes, weight=None
+    )
 
-    return f1_score(np.ravel(true_adj), np.ravel(est_adj))
+    f1 = f1_score(np.ravel(true_adj), np.ravel(est_adj))
+    print("F1-score for the model skeleton: ", f1)
 
 
 def is_independent(X, Y, model):
