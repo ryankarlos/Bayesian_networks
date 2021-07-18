@@ -9,6 +9,7 @@ from pgmpy.estimators import (
     TreeSearch,
     PC,
 )
+from networkx.algorithms import tree
 
 LOG = get_logger(__name__)
 
@@ -79,3 +80,9 @@ def scoring_functions(data, scoring_method="k2"):
         return K2Score(data)
     else:
         return BicScore(data)
+
+
+def max_spanning_tree(G, algorithm="kruskal"):
+    mst = tree.maximum_spanning_edges(G, algorithm=algorithm, data=False)
+    edgelist = list(mst)
+    return edgelist
