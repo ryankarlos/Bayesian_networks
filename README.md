@@ -1,4 +1,3 @@
-# Bayesian_modelling
-Examples of pymc3, pomegranate and bnlearn for modelling different problems
+# Bayesian Networks
 
-WORK IN PROGRESS 
+Comparing the different packages for discrete and dynamic Bayesian networks - structure and parameter estimation
