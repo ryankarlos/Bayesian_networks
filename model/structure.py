@@ -9,6 +9,8 @@ from pgmpy.estimators import (
     TreeSearch,
     PC,
 )
+from pgmpy.models import BayesianModel
+
 from networkx.algorithms import tree
 
 LOG = get_logger(__name__)
@@ -18,13 +20,13 @@ class StructureLearning:
     def __init__(self, data):
         self.data = data
 
-    def score_based(self, scoring="bic", algo="hc", root_node=None):
+    def score_based(self, algo="hc", scoring="bic", root_node=None):
         scoring = scoring_functions(self.data, scoring)
         if algo == "es":
             es = ExhaustiveSearch(self.data, scoring_method=scoring)
             model = es.estimate()
         elif algo == "hc":
-            hc = HillClimbSearch(self.data, scoring_method=scoring)
+            hc = HillClimbSearch(self.data)
             model = hc.estimate()
         elif algo == "tree":
             assert root_node is not None
@@ -80,6 +82,21 @@ def scoring_functions(data, scoring_method="k2"):
         return K2Score(data)
     else:
         return BicScore(data)
+
+
+def true_structure(edge_list):
+    """
+    Specify list of edges and pass to the Bayesian Model
+    constructor to create a DAG based on known/true relationships
+    Parameters
+    ----------
+    edge_list
+
+    Returns
+    -------
+    DAG
+    """
+    return BayesianModel(edge_list)
 
 
 def max_spanning_tree(G, algorithm="kruskal"):

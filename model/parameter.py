@@ -1,14 +1,21 @@
 from pgmpy.estimators import BayesianEstimator, MaximumLikelihoodEstimator
 import pgmpy
 from pgmpy.factors.discrete import TabularCPD
+from utils.log import get_logger
+
+LOG = get_logger(__name__)
 
 
 def learn_model_parameters(
-    model_struct, data, estimator: str, prior_type="BDeu", eq_sample_size=1000
+    model_struct,
+    data,
+    estimator: str,
+    prior_type="BDeu",
+    eq_sample_size=1000,
+    get_cpd=None,
 ):
     if estimator == "MLE":
         model_struct.fit(data=data, estimator=MaximumLikelihoodEstimator)
-        return model_struct
     elif estimator == "BE":
         model_struct.fit(
             data=data,
@@ -16,12 +23,15 @@ def learn_model_parameters(
             prior_type=prior_type,
             equivalent_sample_size=eq_sample_size,
         )
-        return model_struct
+    if get_cpd is not None:
+        cpd = get_cpd_from_model(model_struct, get_cpd)
+
+        return model_struct, cpd
+    return model_struct
 
 
 def get_cpd_from_model(model_struct, node):
     cpd = model_struct.get_cpds(node)
-    print(cpd)
     return cpd
 
 

@@ -1,24 +1,25 @@
 from pgmpy.inference import VariableElimination
 
 
-def infer_variable_cpd(model):
+def infer_variable_cpd(model, variable: list, evidence: dict):
     """
     Compute probability distribution for a variable in
     the network, given a set of variables(evidence).
     Parameters
     ----------
     model
+    variable
+    evidence
 
     Returns
     -------
 
     """
     infer = VariableElimination(model)
-    g_dist = infer.query(["G"])
-    return g_dist
+    return infer.query(variables=variable, evidence=evidence)
 
 
-def predict_values_from_new_data(model):
+def predict_values_from_new_data(model, variable: list):
     """
     Predicting values from new data points is quite similar to computing the
     conditional probabilities. We need to query for the variable that we need to predict
@@ -27,10 +28,11 @@ def predict_values_from_new_data(model):
     Parameters
     ----------
     model
+    variable
 
     Returns
     -------
 
     """
     infer = VariableElimination(model)
-    return infer.map_query(["G"])
+    return infer.map_query(variable)

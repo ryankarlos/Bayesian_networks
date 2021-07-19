@@ -1,13 +1,14 @@
 from pyvis.network import Network
 import networkx as nx
 from networkx.generators.ego import ego_graph
+import pandas as pd
 
 
 def draw_network(G, ax, edge_list=None, color="red"):
     # draw from existing nx object
     if edge_list is not None:
         G = nx.Graph()
-        G.add_edges_from(edgelist)  # using a list of edge tuples
+        G.add_edges_from(edge_list)  # using a list of edge tuples
         # pruned network after Max weighted spanning tree algo
         pos = nx.spring_layout(G)
         nx.draw_networkx(G, pos=pos, node_color=color, ax=ax)
@@ -49,3 +50,12 @@ def plot_ego_network(G, n, radius, ax):
     ego_nx = ego_graph(G, n, radius=radius)
     draw_network(ego_nx, ax=ax, color="red")
     return ego_nx
+
+
+def plot_interactive_network(model, title):
+    net = Network(notebook=True)
+    net.from_nx(model)
+    net.show_buttons(filter=["physics"])
+    filename = f"{title}.html"
+    net.show(filename)
+    return net
