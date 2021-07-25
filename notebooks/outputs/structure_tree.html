@@ -1,0 +1,123 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+        #config {
+            float: left;
+            width: 400px;
+            height: 600px;
+        }
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<div id = "config"></div>
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "age", "label": "age", "shape": "dot", "size": 10, "weight": null}, {"id": "job", "label": "job", "shape": "dot", "size": 10, "weight": null}, {"id": "marital", "label": "marital", "shape": "dot", "size": 10, "weight": null}, {"id": "month", "label": "month", "shape": "dot", "size": 10, "weight": null}, {"id": "default", "label": "default", "shape": "dot", "size": 10, "weight": null}, {"id": "education", "label": "education", "shape": "dot", "size": 10, "weight": null}, {"id": "contact", "label": "contact", "shape": "dot", "size": 10, "weight": null}, {"id": "poutcome", "label": "poutcome", "shape": "dot", "size": 10, "weight": null}, {"id": "campaign", "label": "campaign", "shape": "dot", "size": 10, "weight": null}, {"id": "day_of_week", "label": "day_of_week", "shape": "dot", "size": 10, "weight": null}, {"id": "housing", "label": "housing", "shape": "dot", "size": 10, "weight": null}, {"id": "previous", "label": "previous", "shape": "dot", "size": 10, "weight": null}, {"id": "pdays", "label": "pdays", "shape": "dot", "size": 10, "weight": null}, {"id": "loan", "label": "loan", "shape": "dot", "size": 10, "weight": null}, {"id": "y", "label": "y", "shape": "dot", "size": 10, "weight": null}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "age", "to": "job", "weight": null}, {"arrows": "to", "from": "age", "to": "marital", "weight": null}, {"arrows": "to", "from": "age", "to": "month", "weight": null}, {"arrows": "to", "from": "age", "to": "default", "weight": null}, {"arrows": "to", "from": "job", "to": "education", "weight": null}, {"arrows": "to", "from": "month", "to": "contact", "weight": null}, {"arrows": "to", "from": "month", "to": "poutcome", "weight": null}, {"arrows": "to", "from": "month", "to": "campaign", "weight": null}, {"arrows": "to", "from": "month", "to": "day_of_week", "weight": null}, {"arrows": "to", "from": "contact", "to": "housing", "weight": null}, {"arrows": "to", "from": "poutcome", "to": "previous", "weight": null}, {"arrows": "to", "from": "poutcome", "to": "pdays", "weight": null}, {"arrows": "to", "from": "housing", "to": "loan", "weight": null}, {"arrows": "to", "from": "pdays", "to": "y", "weight": null}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "physics"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+        // if this network requires displaying the configure window,
+        // put it in its div
+        options.configure["container"] = document.getElementById("config");
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
