@@ -7,3 +7,5 @@ ipykernel
 dgl
 pathpy2
 matplotlib
+teneto
+karateclub
