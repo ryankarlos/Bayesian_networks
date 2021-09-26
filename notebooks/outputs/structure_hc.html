@@ -20,17 +20,17 @@
             float: left;
         }
 
-        
 
-        
+
+
         #config {
             float: left;
             width: 400px;
             height: 600px;
         }
-        
 
-        
+
+
 </style>
 
 </head>
@@ -46,16 +46,16 @@
     // initialize global variables.
     var edges;
     var nodes;
-    var network; 
+    var network;
     var container;
     var options, data;
 
-    
+
     // This method is responsible for drawing the graph, returns the drawn network
     function drawGraph() {
         var container = document.getElementById('mynetwork');
-        
-        
+
+
 
         // parsing and collecting nodes and edges from the python
         nodes = new vis.DataSet([{"id": "job", "label": "job", "shape": "dot", "size": 10, "weight": null}, {"id": "marital", "label": "marital", "shape": "dot", "size": 10, "weight": null}, {"id": "month", "label": "month", "shape": "dot", "size": 10, "weight": null}, {"id": "age", "label": "age", "shape": "dot", "size": 10, "weight": null}, {"id": "education", "label": "education", "shape": "dot", "size": 10, "weight": null}, {"id": "default", "label": "default", "shape": "dot", "size": 10, "weight": null}, {"id": "contact", "label": "contact", "shape": "dot", "size": 10, "weight": null}, {"id": "housing", "label": "housing", "shape": "dot", "size": 10, "weight": null}, {"id": "loan", "label": "loan", "shape": "dot", "size": 10, "weight": null}, {"id": "y", "label": "y", "shape": "dot", "size": 10, "weight": null}, {"id": "day_of_week", "label": "day_of_week", "shape": "dot", "size": 10, "weight": null}, {"id": "campaign", "label": "campaign", "shape": "dot", "size": 10, "weight": null}, {"id": "pdays", "label": "pdays", "shape": "dot", "size": 10, "weight": null}, {"id": "previous", "label": "previous", "shape": "dot", "size": 10, "weight": null}, {"id": "poutcome", "label": "poutcome", "shape": "dot", "size": 10, "weight": null}]);
@@ -96,21 +96,21 @@
         }
     }
 };
-        
-        
 
-        
+
+
+
         // if this network requires displaying the configure window,
         // put it in its div
         options.configure["container"] = document.getElementById("config");
-        
+
 
         network = new vis.Network(container, data, options);
-	 
-        
 
 
-        
+
+
+
 
         return network;
 

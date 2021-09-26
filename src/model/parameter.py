@@ -1,9 +1,9 @@
 from pgmpy.estimators import BayesianEstimator, MaximumLikelihoodEstimator
-import pgmpy
 from pgmpy.factors.discrete import TabularCPD
-from utils.log import get_logger
 
-LOG = get_logger(__name__)
+from ..utils.logging_conf import get_logger
+
+LOG = get_logger()
 
 
 def learn_model_parameters(

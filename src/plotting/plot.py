@@ -1,7 +1,5 @@
-from pyvis.network import Network
 import networkx as nx
-from networkx.generators.ego import ego_graph
-import pandas as pd
+from pyvis.network import Network
 
 
 def draw_network(G, ax, edge_list=None, color="red"):

@@ -1,19 +1,19 @@
-from utils.log import get_logger
+from networkx.algorithms import tree
 from pgmpy.estimators import (
-    HillClimbSearch,
-    ExhaustiveSearch,
+    PC,
     BDeuScore,
-    K2Score,
     BicScore,
+    ExhaustiveSearch,
+    HillClimbSearch,
+    K2Score,
     MmhcEstimator,
     TreeSearch,
-    PC,
 )
 from pgmpy.models import BayesianModel
 
-from networkx.algorithms import tree
+from ..utils.logging_conf import get_logger
 
-LOG = get_logger(__name__)
+LOG = get_logger()
 
 
 class StructureLearning:
@@ -37,9 +37,9 @@ class StructureLearning:
 
     def constraint_based(self):
         """
-        Estimates a DAG from the given dataset using the PC algorithm.
-        The independencies in the dataset are identified by doing
-        statistical independence tests.
+        Estimates a DAG from the given dataset using the
+        PC algorithm. The independencies in the dataset are
+        identified by doing statistical independence tests.
         Returns
         -------
         model
@@ -50,12 +50,13 @@ class StructureLearning:
 
     def hybrid(self):
         """
-        Uses the MMHC algorithm which combines the constraint-based and score-based method.
+        Uses the MMHC algorithm which combines the constraint-based and
+        score-based method.
         It has two parts:
-            Learn undirected graph skeleton using the constraint-based construction
-            procedure MMPC
-            orient edges using score-based optimization (BDeu score + modified
-            hill-climbing)
+            Learn undirected graph skeleton using the constraint-based
+            construction procedure MMPC.
+            Orient edges using score-based optimization
+            (BDeu score + modified hill-climbing)
 
         Returns
         -------
@@ -68,8 +69,9 @@ class StructureLearning:
 
 def scoring_functions(data, scoring_method="k2"):
     """
-    Commonly used scores to measure the fit between model and data are Bayesian Dirichlet scores such as BDeu or K2
-    and the Bayesian Information Criterion (BIC). BDeu is dependent on an equivalent sample size.
+    Commonly used scores to measure the fit between model and data are
+    Bayesian Dirichlet scores such as BDeu or K2 and the Bayesian Information
+    Criterion (BIC). BDeu is dependent on an equivalent sample size.
     Returns
     -------
 

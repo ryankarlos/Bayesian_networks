@@ -1,5 +1,9 @@
 from pgmpy.inference import VariableElimination
 
+from ..utils.logging_conf import get_logger
+
+LOG = get_logger()
+
 
 def infer_variable_cpd(model, variable: list, evidence: dict):
     """
@@ -22,9 +26,10 @@ def infer_variable_cpd(model, variable: list, evidence: dict):
 def predict_values_from_new_data(model, variable: list):
     """
     Predicting values from new data points is quite similar to computing the
-    conditional probabilities. We need to query for the variable that we need to predict
-    given all the other features. The only difference is that rather than getting
-    the probabilitiy distribution we are interested in getting the most probable state of the variable.
+    conditional probabilities. We need to query for the variable that we need to
+    predict given all the other features. The only difference is that rather
+    than getting the probabilitiy distribution we are interested in getting
+    the most probable state of the variable.
     Parameters
     ----------
     model
