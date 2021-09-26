@@ -4,8 +4,5 @@ pyyaml==5.4.1
 networkx==2.5.1
 iteration_utilities==0.11.0
 ipykernel
-dgl
-pathpy2
-matplotlib
-teneto
-karateclub
+hmmlearn==0.2.6
+pomegranate==0.14.5
