@@ -1,7 +1,7 @@
 from pgmpy.estimators import BayesianEstimator, MaximumLikelihoodEstimator
 from pgmpy.factors.discrete import TabularCPD
 
-from ..utils.logging_conf import get_logger
+from pgm.utils.logging_conf import get_logger
 
 LOG = get_logger()
 

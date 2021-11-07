@@ -3,7 +3,10 @@ pgmpy==0.1.15
 pyyaml==5.4.1
 networkx==2.5.1
 iteration_utilities==0.11.0
-ipykernel
 hmmlearn==0.2.6
 pomegranate==0.14.5
-pre-commit
+prefect==0.15.7
+quandl==3.6.2
+matplotlib
+mplfinance
+pandas_datareader
