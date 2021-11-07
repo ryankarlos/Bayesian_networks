@@ -27,7 +27,6 @@ def get_quotes_data_finance(name="yahoo"):
     Stocks.reset_index(inplace=True, drop=False)
     Stocks.drop(["Open", "High", "Low", "Adj Close"], axis=1, inplace=True)
     Stocks["Date"] = Stocks["Date"].apply(datetime.datetime.toordinal)
-    Stocks = list(Stocks.itertuples(index=False, name=None))
     d = os.path.join(Path().resolve().parent.parent.parent, "data/stocks.csv")
     Stocks.to_csv(d)
     return Stocks
@@ -35,6 +34,7 @@ def get_quotes_data_finance(name="yahoo"):
 
 @task(nout=3)
 def process_and_plot_stocks_data(Stocks):
+    Stocks = list(Stocks.itertuples(index=False, name=None))
     dates = np.array([q[0] for q in Stocks], dtype=int)
     end_val = np.array([q[1] for q in Stocks])
     volume = np.array([q[2] for q in Stocks])[1:]
