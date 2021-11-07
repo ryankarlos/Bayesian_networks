@@ -95,5 +95,5 @@ if __name__ == "__main__":
         compute_mean_and_vars_hidden_state(model)
         plot_trained_parameters(model, hidden_states, dates, end_val)
 
-    # flow.visualize()
-    flow.run()
+    flow_state = flow.run()
+    flow.visualize(flow_state=flow_state)
