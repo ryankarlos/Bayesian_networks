@@ -1,6 +1,6 @@
 from pgmpy.inference import VariableElimination
 
-from pgm.logging_conf import get_logger
+from pgm.model.utils.logging_conf import get_logger
 
 LOG = get_logger()
 
