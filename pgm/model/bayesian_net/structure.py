@@ -11,7 +11,7 @@ from pgmpy.estimators import (
 )
 from pgmpy.models import BayesianModel
 
-from pgm.utils.logging_conf import get_logger
+from pgm.logging_conf import get_logger
 
 LOG = get_logger()
 
