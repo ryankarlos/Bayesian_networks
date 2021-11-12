@@ -1,3 +1,5 @@
-# Bayesian Networks
+# Probabilistic Graphical Models
 
-Comparing the different packages for discrete and dynamic Bayesian networks - structure and parameter estimation
+
+Using various python packages (pgmpy, pomegranate, pgmpy) for examples of markov and bayesian graphical models.
+
