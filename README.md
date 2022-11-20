@@ -46,7 +46,7 @@ The first property makes exhaustive search intractable for all but very small ne
 local optimization algorithms to always find the optimal structure. Thus, identifiving the ideal structure is often
 not tractable. Despite this, heuristic search strategies often yields good results.
 
-*Algorithms*
+**Algorithms**
 
 1. Chow-Liu tree-building algorithm: This algorithm first calculates the mutual information between all pairs of
  variables and then determines the maximum weight spanning tree through it. The pseudocode can be roughly
@@ -72,7 +72,7 @@ A different, but quite straightforward approach to build a DAG from data is this
 1. Identify independencies in the data set using hypothesis tests
 2. Construct DAG (pattern) according to identified independencies
 
-*Conditional Independence Tests*
+**Conditional Independence Tests**
 
 Independencies in the data can be identified using chi2 conditional independence tests. To this end, constraint-based
 estimators in pgmpy, have a test conditional independence (X, Y, Z)-method, that performs a hypothesis test on the
@@ -108,7 +108,7 @@ print(is_independent('A', 'G')) #True
 print(is_independent('A', 'G', ['H'])) #False
 ```
 
-*DAG (pattern) construction*
+**DAG (pattern) construction**
 
 With a method for independence testing at hand, we can construct a DAG from the data set in three steps:
 
@@ -177,10 +177,10 @@ plt.figure(figsize=(15,15))
 nx.dcaw.networkx(pruned.net, pos=nx.spring_layout(dag))
 ```
 
-3. Use *Breadth First Search (BFS)* for traversing the unweighted graph. It uses the following steps:
+3. Use **Breadth First Search (BFS)** for traversing the unweighted graph. It uses the following steps:
 
 - BFS starts with the root node and explores each adjacent node before exploring node(s) at the next level.
-- BFS makes use of *Queue* for storing the visited nodes of the graph / tree.
+- BFS makes use of **Queue** for storing the visited nodes of the graph / tree.
 
 ```
 from networkx.algorithms.traversal.breadth_first_search import bfs_tree
@@ -209,11 +209,11 @@ the models. e.g. What is the probability of the alarm being on given one is burg
 of an event given the evidence observed. Currently, pampy support two algorithms for inference, both of these are
 exact inference algorithms.
 
-1. *Variable Elimination*: save computing time and avoid computing the full Joint Distribution by doing marginalization
+1. **Variable Elimination**: save computing time and avoid computing the full Joint Distribution by doing marginalization
 over much smaller factors. So basically if we want to eliminate X from our distribution, then we compute the product
 of all the factors involving X and marginalize over them, thus allowing us to work on much smaller factors.
 
-2. *Belief Propagation*.
+2. **Belief Propagation**.
 
 In the case of large models, or models in which variables have a lot of states, inference can be quite slow. Some
 ways to deal with it are:
